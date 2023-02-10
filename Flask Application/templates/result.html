@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Résultat de la segmentation{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <a href="{{ url_for('index') }}">Essayer avec une autre image</a>
+  <div class="img-container">
+    <h3>Image originale</h3>
+    <img class="result-img" src="{{ url_for('static', filename='org.png') }}" alt="Erreur sur l'image" width="768" height="384">
+  </div>
+  {% if msk_show %}
+  <div class="img-container">
+    <h3>Masque original</h3>
+    <img class="result-img" src="{{ url_for('static', filename='msk.png') }}" alt="Erreur sur l'image" width="768" height="384">
+  </div>
+  {% endif %}
+  <div class="img-container">
+    <h3>Segmentation calculée</h3>
+    <img class="result-img" src="{{ url_for('static', filename='seg.png') }}" alt="Erreur sur l'image" width="768" height="384">
+  </div>
+  <br><br>
+  <div>
+    <h3>Etapes et temps de traitement</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Etape</th>
+          <th>Temps (s)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="etape">[Démo] Traitement images</th>
+          <td>{{ t1 }}</td>
+        </tr>
+        <tr>
+          <th class="etape">[Réseau] Envoi requête</th>
+          <td>{{ t2 }}</td>
+        </tr>
+        <tr>
+          <th class="etape">[API] Dépaquetage image</th>
+          <td>{{ t3 }}</td>
+        </tr>
+        <tr>
+          <th class="etape">[API] Prédiction</th>
+          <td>{{ t4 }}</td>
+        </tr>
+        <tr>
+          <th class="etape">[API] Traitement masque</th>
+          <td>{{ t5 }}</td>
+        </tr>
+        <tr>
+          <th class="etape">[Réseau] Envoi réponse</th>
+          <td>{{ t6 }}</td>
+        </tr>
+        <tr>
+          <th class="etape">[Démo] Traitement masque</th>
+          <td>{{ t7 }}</td>
+        </tr>
+        <tr>
+          <th>Total</th>
+          <th class="total">{{ tt }}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+{% endblock %}

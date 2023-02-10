@@ -1,0 +1,9 @@
+runtime: python39
+instance_class: F4_1G
+
+env_variables:
+  UPLOAD_BUCKET: "true-vista-364409.appspot.com"
+
+handlers:
+- url: /
+  script: main.app

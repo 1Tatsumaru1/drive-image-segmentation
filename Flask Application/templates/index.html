@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Segmenter une image{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <div id="cover">
+    <img src="{{ url_for('static', filename='loading.gif') }}" alt="Attente des résultats">
+  </div>
+  <form id="img_form" name="img_form" method="post" enctype="multipart/form-data" action="{{ url_for('result') }}">
+    <label for="img">Uploader une image</label>
+    <input type="file" accept="image/png" name="img" id="img" value="{{ request.files['img'] }}">
+    <label for="msk">Uploader le masque correspondant (Optionnel)</label>
+    <input type="file" accept="image/png" name="msk" id="msk" value="{{ request.files['msk'] }}">
+    <input type="submit" id="img_submit" value="Segmenter image">
+  </form>
+{% endblock %}
