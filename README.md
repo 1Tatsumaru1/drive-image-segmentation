@@ -1,6 +1,7 @@
 <h1 align="center">
   <br>
   <img src="https://github.com/1Tatsumaru1/drive-image-segmentation/blob/master/img/techno.png" alt="Application technologies">
+  <img src="https://github.com/1Tatsumaru1/drive-image-segmentation/blob/master/img/techno2.png" alt="Application technologies">
   <br>
   Image Segmentation Application & API
   <br>
